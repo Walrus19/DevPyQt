@@ -8,7 +8,7 @@
 порядке (задом наперед).
 """
 
-from PySide6 import QtWidgets
+from PySide6 import QtWidgets, QtCore, QtGui
 
 
 class Window(QtWidgets.QWidget):
@@ -27,7 +27,9 @@ class Window(QtWidgets.QWidget):
         self.pushButtonClear = QtWidgets.QPushButton('Clear')
 
     def __initSignals(self):
-        pass
+        self.pushButtonMirror.clicked.connect(self.lineEditMirror.show)
+        self.pushButtonClear.clicked.connect(self.lineEditMirror.clear)
+       
 
     def __onPushButtonMirrorClicked(self):
         pass

@@ -18,13 +18,26 @@
    в него соответствующие значения
 """
 
-from PySide6 import QtWidgets
+from PySide6 import QtWidgets, QtCore
+from ui.d_eventfilter_settings_form import Ui_Form
 
 
-class Window(QtWidgets.QWidget):
+class Window(QtWidgets.QWidget, Ui_Form):
 
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.setupUi(self)
+
+
+    def keyPressEvent(self, event, /):
+        # print(event, event.type(), event.key(), event.count(), event.device(), sep='___')
+        if event.key() == QtCore.Qt.Key.Key_Right:
+            self.dial.setValue(self.dial.value() + 1)
+        elif event.key() == QtCore.Qt.Key.Key_Left:
+            self.dial.setValue(self.dial.value() - 1)
+        return super().keyPressEvent(event)
+
+
 
 
 if __name__ == "__main__":
