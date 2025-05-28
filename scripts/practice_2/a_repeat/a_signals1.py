@@ -9,38 +9,20 @@
 """
 
 from PySide6 import QtWidgets
+from a import Ui_Form
 
 
-class Window(QtWidgets.QWidget):
+class Window(QtWidgets.QWidget, Ui_Form):
     def __init__(self, parent=None):
         super().__init__(parent)
 
         self.count = 0
 
-        self.__initUi()
+        self.setupUi(self)
         self.__initSignals()
 
     def __initUi(self):
-        self.layout_h1 = QtWidgets.QHBoxLayout()
-        self.layout_h2 = QtWidgets.QHBoxLayout()
-
-        self.lineEditInput = QtWidgets.QLineEdit()
-        self.lineEditMirror = QtWidgets.QLineEdit()
-
-        self.pushButtonMirror = QtWidgets.QPushButton('Mirror')
-        self.pushButtonClear = QtWidgets.QPushButton('Clear')
-
-        self.layout_h1.addWidget(self.lineEditInput)
-        self.layout_h1.addWidget(self.lineEditMirror)
-
-        self.layout_h2.addWidget(self.pushButtonMirror)
-        self.layout_h2.addWidget(self.pushButtonClear)
-
-        self.layout_main = QtWidgets.QVBoxLayout()
-        self.layout_main.addLayout(self.layout_h1)
-        self.layout_main.addLayout(self.layout_h2)
-
-        self.setLayout(self.layout_main)
+        pass
 
 
     def __initSignals(self):
@@ -62,8 +44,6 @@ class Window(QtWidgets.QWidget):
         self.lineEditMirror.setText(text[::-1])
         print(text)
 
-    def keyPressEvent(self, event, /):
-        print(event)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication()
