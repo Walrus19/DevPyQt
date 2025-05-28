@@ -19,16 +19,17 @@ class Window(QtWidgets.QWidget):
 
     def __initUi(self):
         self.__plainTextEdit = QtWidgets.QPlainTextEdit()
+        self.__plainTextEdit.setPlainText()
         layout = QtWidgets.QVBoxLayout()
         layout.addWidget(self.__plainTextEdit)
         self.setLayout(layout)
     def __loadSettings(self):
-        settings = QSettings()
-        return settings.value(self.__plainTextEdit.)
+        self.settings = QSettings()
+        return self.settings.value(self.__plainTextEdit)
 
     def __saveSettings(self):
-        settings = QSettings()
-        return settings.setValue(self.__plainTextEdit)
+        self.settings = QSettings()
+        return self.settings.setValue(self.__plainTextEdit)
 
 
 if __name__ == "__main__":
