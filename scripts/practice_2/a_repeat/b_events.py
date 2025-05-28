@@ -9,6 +9,7 @@
 """
 
 from PySide6 import QtWidgets, QtCore
+import datetime
 
 
 class Window(QtWidgets.QWidget):
@@ -17,7 +18,7 @@ class Window(QtWidgets.QWidget):
         super().__init__(parent)
 
     def event(self, event: QtCore.QEvent):
-        pass
+        print(datetime.datetime.now().time(), event.type())
 
 
 if __name__ == "__main__":

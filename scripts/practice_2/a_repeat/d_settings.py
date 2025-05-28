@@ -9,7 +9,7 @@
 """
 
 from PySide6 import QtWidgets
-
+from PySide6.QtCore import QSettings
 
 class Window(QtWidgets.QWidget):
 
@@ -19,12 +19,16 @@ class Window(QtWidgets.QWidget):
 
     def __initUi(self):
         self.__plainTextEdit = QtWidgets.QPlainTextEdit()
-
+        layout = QtWidgets.QVBoxLayout()
+        layout.addWidget(self.__plainTextEdit)
+        self.setLayout(layout)
     def __loadSettings(self):
-        pass
+        settings = QSettings()
+        return settings.value(self.__plainTextEdit.)
 
     def __saveSettings(self):
-        pass
+        settings = QSettings()
+        return settings.setValue(self.__plainTextEdit)
 
 
 if __name__ == "__main__":

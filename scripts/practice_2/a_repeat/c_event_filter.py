@@ -8,7 +8,7 @@
 (красивая - красным, кнопка - синим)
 """
 
-from PySide6 import QtWidgets
+from PySide6 import QtWidgets, QtCore
 
 
 class Window(QtWidgets.QWidget):
@@ -19,7 +19,34 @@ class Window(QtWidgets.QWidget):
         self.__initUi()
 
     def __initUi(self):
-        self.__label = QtWidgets.QLabel(self)
+        self.setFixedSize(300, 100)
+        # self.setMouseTracking(True)
+        html_code = """
+        <html>
+        <head>
+        <style>
+        .blue-text {
+          color: blue;
+        }
+        .red-text {
+          color: red;
+        }
+        </style>
+        </head>
+        <body>
+        <p>
+         <span class="red-text">Красивая</span> <span class="blue-text">кнопка</span>
+        </p>
+        </body>
+        </html>
+        """
+        self.__label = QtWidgets.QLabel(html_code)
+        self.__label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.__label.installEventFilter(self)  # Установка фильтра событий на конкретный виджет
+
+        layout = QtWidgets.QVBoxLayout()
+        layout.addWidget(self.__label)
+        self.setLayout(layout)
 
 
 if __name__ == "__main__":
